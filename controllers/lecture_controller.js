@@ -281,8 +281,29 @@ exports.counter = (req,res,next) => {
                 .catch(err => {
                     next();
                     res.sendStatus(400)
-                })
+                });
             }
-        })
+        });
     }
         
+exports.regis = (req,res,next) => {
+    lecture.findOneAndUpdate({lecture_id: req.body.lecture_id},{$push : {registered: req.body.uid}})
+    .then(result => {
+        next();
+        res.sendStatus(200)
+    })
+    .catch(err => {
+        res.sendStatus(400)
+    });
+}
+
+exports.regigas = (req,res,next) => {
+    lecture.findOneAndUpdate({lecture_id: req.body.lecture_id},{$pull : {registered: req.body.uid}})
+    .then(result => {
+        next();
+        res.sendStatus(200)
+    })
+    .catch(err => {
+        res.sendStatus(400)
+    });
+}

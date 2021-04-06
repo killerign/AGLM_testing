@@ -19,4 +19,9 @@ router.post('/mylectures_future',jsonParser,lecturecontroller.checkregisters_fut
 router.post('/mylectures_pre',jsonParser,lecturecontroller.checkregisters_pre);
 router.post('/countlectures',jsonParser,lecturecontroller.counter);
 router.post('/createlecture',jsonParser,lecturecontroller.creator);
+router.post('/register',jsonParser,lecturecontroller.regis);
+router.post('/remove',jsonParser,lecturecontroller.regigas);
+router.get("/test", async (req, res) => {
+    res.json({ message: "pass!" });
+  });
 module.exports = router;
