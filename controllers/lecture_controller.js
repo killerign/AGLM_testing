@@ -82,7 +82,6 @@ exports.past = (req,res,next) => {
     lecture.find({$or : [{"geoinfo.stdate" : {$gt : today}},{$and :[{"geoinfo.eddate" : {$gt : today}},{"geoinfo.stdate": {$lte : today}},{$or :[{"geoinfo.edtime":{$gt :time}},{"geoinfo.sttime": {$lt: time}}]}]}]},{_id : 0}).sort({"geoinfo.eddate":1})
      .then(result =>{
              next();
-             console.log(result);
              res.send(result);
      })
      .catch(err =>

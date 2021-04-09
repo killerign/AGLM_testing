@@ -8,9 +8,9 @@ const client = new MongoClient(url);
 const apiroutes = require('./routes/api_routes');
 app.use('/', apiroutes); //using routes specified externally
 app.use(express.json());
-mongoose.connect(url,{useNewUrlParser: true,useUnifiedTopology: true})
+mongoose.connect(url,{useNewUrlParser: true,useUnifiedTopology: false})
   .then(()=>{
-    app.listen(port);
+    //app.listen(port);
     console.log("connected");
     mongoose.connection.db.listCollections({name: 'login'})
     .next(function(err, collinfo) {

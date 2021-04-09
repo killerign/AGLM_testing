@@ -10,8 +10,7 @@
     "mongoose": "^5.11.19"
   },
   "jest": {
-    "testEnvironment": "node",
-    "port": 8000
+    "testEnvironment": "node"
   },
   "scripts": {
     "start": "node app.js",
