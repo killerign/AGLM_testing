@@ -10,7 +10,6 @@ exports.fullInfo = (req,res,next) => {
                  var oneLec= await lecture.findOne({"lecture_id": result['lectures'][i]},{_id : 0}).select('title poster about geoinfo');
                  info.push({'title':oneLec['title'],'poster':oneLec['poster'],'about':oneLec['about'],'date':oneLec['geoinfo']['stdate']});
              }
-             console.log(info);
            }
          await forLoop();
          /*console.log(result['lectures']);
