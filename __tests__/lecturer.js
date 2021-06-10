@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const time = require('../time');
 const sinon = require('sinon');
 sinon.stub(time, 'setTimeout');
-jest.setTimeout(30000);
+jest.setTimeout(50000);
 
 beforeAll(async () => {
   const url = "mongodb+srv://AGLM:cseb@aglm.kqx5g.mongodb.net/AGLM-DB?retryWrites=true&w=majority";
@@ -54,7 +54,6 @@ describe("Check if lecturer collection returns", ()=> {
 		});
 		expect(res.status).toBe(200);
         var char = false
-        console.log(res.body);
         for (let i = 0; i < res.body.length; i++) {
             if(res.body[i]['name']=='Jamie swan')
             {
@@ -62,6 +61,13 @@ describe("Check if lecturer collection returns", ()=> {
             }    
         }
         expect(char).toBeTruthy();
+		done();
+	});
+    test("Delete created lecture", async(done) => {
+		const res = await request.post("/destroylecture").send({
+			name : obj.name
+		});
+		expect(res.status).toBe(200);
 		done();
 	});
   });
@@ -97,7 +103,6 @@ describe("Check if file is added to repository", ()=> {
         for (let i = 0; i < res.body.length; i++) {
             if(res.body[i]['lecture_id'] == id)
             {   
-                console.log(res.body[i]['repository'][0]);
                 for(let j = 0; j<res.body[i]['repository'][0].length;j++)
                 {
                     if(res.body[i]['repository'][0][j] == url)
@@ -108,6 +113,14 @@ describe("Check if file is added to repository", ()=> {
             }    
         }
         expect(char).toBeTruthy();
+		done();
+	});
+    test("Delete added image", async(done) => {
+		const res = await request.post("/destroyfile").send({
+			lecture_id : id,
+            url : url
+		});
+		expect(res.status).toBe(200);
 		done();
 	});
   });

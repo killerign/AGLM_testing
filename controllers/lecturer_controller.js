@@ -67,11 +67,8 @@ exports.createlecturer = (req,res,next) => {
         else{
             var obj = req.body;
             obj["lecturer_id"] = String(count+2);
-            console.log(typeof obj);
-            console.log(JSON.stringify(obj));
             lecturer.create(obj)
             .then(result => {
-                console.log(result)
                 res.sendStatus(200)
             })
             .catch(err => {

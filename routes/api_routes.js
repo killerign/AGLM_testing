@@ -31,5 +31,7 @@ router.post('/pastLectures',jsonParser,lecturercontroller.pastLectures);
 router.post('/addFile',jsonParser,lecturecontroller.addFile);
 router.get('/lecturerList',jsonParser,lecturercontroller.lecturerList);
 router.post('/createlecturer',jsonParser,lecturercontroller.createlecturer);
+router.post('/destroylecture',jsonParser,lecturecontroller.destroy);
+router.post('/destroyfile',jsonParser,lecturecontroller.destroyfile);
 
 module.exports = router;

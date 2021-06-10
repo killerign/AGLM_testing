@@ -32,7 +32,6 @@ exports.poster = (req,res,next) => {
 }
 
 exports.sendall = (req,res,next) => {
-    console.log("Here mate");
     approve.find({},{_id : 0})
     .then(result => {
         next();
@@ -56,16 +55,14 @@ exports.deleter = (req,res,next) => {
         if(req.body.uid != ""){
         post.create({"uid": req.body.uid, "type" : "guser" ,"email":req.body.email})
         .then(result => {
-            console.log(result);
             next();
-            console.log("success")
         })
         .catch(err =>{
-            console.log(err)
+            
         })
         }
         else{
-            console.log("Non existent")
+            
         }
         })
     .catch(err =>{
