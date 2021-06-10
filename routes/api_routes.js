@@ -3,7 +3,8 @@ var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json();
 const postcontroller = require('../controllers/post_controller');
 const approvecontroller = require('../controllers/approvecontroller');
-const lecturecontroller = require('../controllers/lecture_controller')
+const lecturecontroller = require('../controllers/lecture_controller');
+const lecturercontroller = require('../controllers/lecturer_controller')
 const router = express();
 var cors = require('cors')
 router.use(cors());
@@ -24,4 +25,11 @@ router.post('/remove',jsonParser,lecturecontroller.regigas);
 router.get("/test", async (req, res) => {
     res.json({ message: "pass!" });
   });
+router.post('/getLecturer',jsonParser,lecturercontroller.fullInfo);
+router.post('/getParticipants',jsonParser,lecturecontroller.getParticipants);
+router.post('/pastLectures',jsonParser,lecturercontroller.pastLectures);
+router.post('/addFile',jsonParser,lecturecontroller.addFile);
+router.get('/lecturerList',jsonParser,lecturercontroller.lecturerList);
+router.post('/createlecturer',jsonParser,lecturercontroller.createlecturer);
+
 module.exports = router;

@@ -1,0 +1,1 @@
+pipeline { agent any environment { CI = 'true' } stages { stage('Hello') { steps { echo 'Hello World' } } stage('Cloning Git') { steps { git '' } } stage('Install dependencies') { steps { sh 'npm install' } } stage('Jest test'){ steps{ sh 'npm test' } } } }

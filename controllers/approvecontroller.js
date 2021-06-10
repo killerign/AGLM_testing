@@ -14,6 +14,7 @@ exports.poster = (req,res,next) => {
     var obj = req.body;
 
     obj["Date"]=today;
+    var clear = "monday";
     /*
     var temp = JSON.string
     obj = JSON.parse(req.body);
@@ -53,7 +54,7 @@ exports.deleter = (req,res,next) => {
         next();
         res.send({status : "Success"});
         if(req.body.uid != ""){
-        post.create({"uid": req.body.uid, "type" : "guser"})
+        post.create({"uid": req.body.uid, "type" : "guser" ,"email":req.body.email})
         .then(result => {
             console.log(result);
             next();
